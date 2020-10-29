@@ -79,6 +79,8 @@ public class Ball : MonoBehaviour
         
         DOTween.Pause("pitching");
 
+        GameData.Instance._sound.Play_EffectSound(9);
+
         bool _right_vector = false;
         if(_target_point.localPosition.z > _ball.transform.localPosition.z) _right_vector = true;
 

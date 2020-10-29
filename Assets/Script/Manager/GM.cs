@@ -10,6 +10,11 @@ public class GM : MonoBehaviour
         GameData.Instance._gm = this;        
     }
 
+    void Start()
+    {
+        GameData.Instance._sound.Play_BGMSound(0);
+    }
+
     public CameraFollow _camera_follow;
     public int _stage;
     public int _score;
@@ -90,9 +95,9 @@ public class GM : MonoBehaviour
         OnStartSetting();
 
         GameData.Instance._ui.OnObject(0, false);
-        
-
         GameData.Instance._ui.OnStartCount(GameData.Instance._ball.OnPitching);
+
+        GameData.Instance._sound.Play_BGMSound(1);
     }
 
     public void OnGameResult()
@@ -100,6 +105,8 @@ public class GM : MonoBehaviour
         GameData.Instance._ui.OnText(3, string.Format("Homerun : {0}\nSafety : {1}\nFoul : {2}\nMiss : {3}", _score, _safety, _foul, _miss));
         GameData.Instance._ui.OnObject(1, true);
         GameData.Instance._ui.EndAnnounce();
+
+        GameData.Instance._sound.Play_BGMSound(0);
     }
 
     public void OnRestart()
